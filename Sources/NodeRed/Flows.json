@@ -7,130 +7,12 @@
         "info": ""
     },
     {
-        "id": "e1fc8670.41a048",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-dark",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#097479",
-                    "value": "#097479",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#097479",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#000000",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#0eb8c0",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#555555",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#eeeeee",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#097479",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#333333",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "7288e795.38d2e8",
-        "type": "ui_tab",
-        "z": "",
-        "name": "Proto",
-        "icon": "dashboard",
-        "order": "",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "ad4debad.0242d8",
-        "type": "ui_group",
-        "z": "",
-        "name": "Robot",
-        "tab": "7288e795.38d2e8",
-        "order": 1,
-        "disp": true,
-        "width": "6",
-        "collapse": true
-    },
-    {
         "id": "4948bf70.5aa3f",
         "type": "ui_template",
         "z": "f4550950.27f8e8",
         "group": "ad4debad.0242d8",
         "name": "PushButtons",
-        "order": 4,
+        "order": 6,
         "width": 0,
         "height": 0,
         "format": "<!Doctype html>\n<html>\n<style>\n.btn-group button {\n  text-decoration: none;\n  display: inline-block;\n  padding: 2px 2px;\n  height:60px;\n  width:60px;\n}\n\n/* Add a background color on hover */\n.btn-group button:hover {\n  background-color: #ddd;\n  color: black;\n  font-size: 20px;\n  font-weight: bold;\n}\n\n.idle {\n  background-color: #aaa;\n  color: white;\n  font-size: 20px;\n  font-weight: bold;\n}\n\n</style>\n\n<body>\n<div class=\"btn-group\">\n  <table align=\"center\">\n    <tr>\n      <td colspan=\"2\" align=\"center\">\n        <button name= \"FORWARD\"\n          id=\"fwd\" \n          class=\"idle\" \n          onmousedown=\"mouseDownFwd()\" \n          onmouseup=\"mouseUpFwd()\">\n            &#8593;\n        </button>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <button name= \"LEFT\"\n        id=\"left\" \n        class=\"idle\" \n        onmousedown=\"mouseDownLeft()\" \n        onmouseup=\"mouseUpLeft()\">\n            &#8592;\n        </button>\n      </td>\n      <td>\n        <button name= \"RIGHT\"\n          id=\"right\" \n          class=\"idle\" \n          onmousedown=\"mouseDownRight()\" \n          onmouseup=\"mouseUpRight()\">\n            &#8594;\n        </button>\n      </td>\n    </tr>\n    <tr>\n      <td colspan=\"2\" align=\"center\">\n          <button name= \"REVERSE\"\n        id=\"reverse\" \n        class=\"idle\" \n        onmousedown=\"mouseDownReverse()\" \n        onmouseup=\"mouseUpReverse()\">\n            &#8595;\n        </button>\n      </td>\n    </tr>\n  </table>\n</div>\n\n<script>\n  //Declare once to make scope available in functions\n  var theScope = scope;\n\n  var fwdButton = document.getElementById('fwd')\n  var leftButton = document.getElementById('left')\n  var rightButton = document.getElementById('right')\n  var reverseButton = document.getElementById('reverse')\n\n  fwdButton.addEventListener('touchstart', process_touchstart, false);\n  fwdButton.addEventListener('touchmove', process_touchmove, false);\n  fwdButton.addEventListener('touchend', process_touchend, false);\n\n  leftButton.addEventListener('touchstart', process_touchstart, false);\n  leftButton.addEventListener('touchmove', process_touchmove, false);\n  leftButton.addEventListener('touchend', process_touchend, false);\n\n  rightButton.addEventListener('touchstart', process_touchstart, false);\n  rightButton.addEventListener('touchmove', process_touchmove, false);\n  rightButton.addEventListener('touchend', process_touchend, false);\n\n  reverseButton.addEventListener('touchstart', process_touchstart, false);\n  reverseButton.addEventListener('touchmove', process_touchmove, false);\n  reverseButton.addEventListener('touchend', process_touchend, false);\n\n  // touchstart handler\n  function process_touchstart(ev) {\n      if (ev.target == fwdButton)\n      {\n        theScope.send({payload:\"FWD\"});\n        fwdButton.innerHTML = \"-\";\n\n      } else if (ev.target == leftButton) {\n        \n        theScope.send({payload:\"LEFT\"});\n        leftButton.innerHTML = \"-\";\n\n      } else if (ev.target == rightButton) {\n\n        theScope.send({payload:\"RIGHT\"});\n        rightButton.innerHTML = \"-\";\n\n      } else if (ev.target == reverseButton) {\n\n        theScope.send({payload:\"REVERSE\"});\n        reverseButton.innerHTML = \"-\";\n      }\n  }\n\n  // touchmove handler\n  function process_touchmove(ev) {\n    // Set call preventDefault()\n    ev.preventDefault();\n  }\n\n  // touchstart handler\n  function process_touchend(ev) {\n    if (ev.target == fwdButton)\n    {\n      theScope.send({payload:\"FWD\"});\n      fwdButton.innerHTML = \"&#8593;\";\n\n    } else if (ev.target == leftButton) {\n      \n      theScope.send({payload:\"LEFT\"});\n      leftBUtton.innerHTML = \"&#8592;\";\n\n    } else if (ev.target == rightButton) {\n\n      theScope.send({payload:\"RIGHT\"});\n      rightButton.innerHTML = \"&#8594;\";\n\n    } else if (ev.target == reverseButton) {\n\n      theScope.send({payload:\"REVERSE\"});\n      reverseButton.innerHTML = \"&#8595;\";\n    }\n    \n    theScope.send({payload:'STOP'});\n  }\n\n// Create touchstart handler\nsomeElement.addEventListener('touchstart', function(ev) {\n  // Iterate through the touch points that were activated\n  // for this element and process each event 'target'\n  for (var i=0; i < ev.targetTouches.length; i++) {\n    process_target(ev.targetTouches[i].target);\n  }\n}, false);\n\nfunction mouseDownFwd() {\n  //then use where needed\n  theScope.send({payload:\"FWD\"});\n  fwdButton.innerHTML = \"-\";\n}\n\nfunction mouseUpFwd() {\n  //then use where needed\n  theScope.send({payload:\"STOP\"});\n  fwdButton.innerHTML = \"&#8593;\";\n}\n\nfunction mouseDownLeft() {\n  //then use where needed\n  theScope.send({payload:\"LEFT\"});\n  leftButton.innerHTML = \"-\";\n}\n\nfunction mouseUpLeft() {\n  //then use where needed\n  theScope.send({payload:\"STOP\"});\n  leftButton.innerHTML = \"&#8592;\";\n}\n\nfunction mouseDownRight() {\n  //then use where needed\n  theScope.send({payload:\"RIGHT\"});\n  rightButton.innerHTML = \"-\";\n}\n\nfunction mouseUpRight() {\n  //then use where needed\n  theScope.send({payload:\"STOP\"});\n  rightButton.innerHTML = \"&#8594;\";\n}\n\nfunction mouseDownReverse() {\n  //then use where needed\n  theScope.send({payload:\"REVERSE\"});\n  reverseButton.innerHTML = \"-\";\n}\n\nfunction mouseUpReverse() {\n  //then use where needed\n  theScope.send({payload:\"STOP\"});\n  reverseButton.innerHTML = \"&#8595;\";\n}\n\n</script>\n\n</body>\n</html>\n",
@@ -156,9 +38,7 @@
         "x": 790,
         "y": 340,
         "wires": [
-            [
-                "fec0823b.d10e"
-            ]
+            []
         ]
     },
     {
@@ -167,15 +47,15 @@
         "z": "f4550950.27f8e8",
         "group": "ad4debad.0242d8",
         "name": "Direction",
-        "order": 3,
+        "order": 5,
         "width": 0,
         "height": 0,
         "format": "<div ng-bind-html=\"msg.payload\" align=\"center\"></div>\n\n\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "templateScope": "local",
-        "x": 740,
-        "y": 440,
+        "x": 780,
+        "y": 280,
         "wires": [
             []
         ]
@@ -190,8 +70,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 1070,
-        "y": 360,
+        "x": 1050,
+        "y": 400,
         "wires": []
     },
     {
@@ -207,7 +87,7 @@
         "storeOutMessages": true,
         "fwdInMessages": true,
         "templateScope": "local",
-        "x": 660,
+        "x": 500,
         "y": 100,
         "wires": [
             []
@@ -236,8 +116,8 @@
         "offvalueType": "bool",
         "officon": "",
         "offcolor": "",
-        "x": 540,
-        "y": 220,
+        "x": 520,
+        "y": 180,
         "wires": [
             [
                 "b91e263e.187838"
@@ -248,13 +128,84 @@
         "id": "b91e263e.187838",
         "type": "python3-function",
         "z": "f4550950.27f8e8",
-        "name": "MotorControl",
+        "name": "LightControl",
         "func": " \nimport RPi.GPIO as GPIO\nimport time\n \n#///////////////// Define Motor Driver GPIO Pins /////////////////\n# Motor A, Left Side GPIO CONSTANTS\nLIGHT_SWITCH = 17\t\t# ENA - H-Bridge enable pin\n\n# SETUP\nGPIO.setwarnings(False)\nGPIO.setmode(GPIO.BCM)\nchan_list = [LIGHT_SWITCH]    \nGPIO.setup(chan_list, GPIO.OUT)\n \nnewMsg = {}\n\nif (msg[\"payload\"] == 0):\n\tGPIO.output(LIGHT_SWITCH, GPIO.HIGH)\n\tnewMsg[\"payload\"] = \"LIGHT ON\"\n\treturn newMsg\n\t\nif (msg[\"payload\"] == 1):\n\tGPIO.output(LIGHT_SWITCH, GPIO.LOW)\n\tnewMsg[\"payload\"] = \"LIGHT OFF\"\n\treturn newMsg\n\n",
         "outputs": 1,
-        "x": 830,
-        "y": 220,
+        "x": 790,
+        "y": 180,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "b2bd91e6.c9258",
+        "type": "ui_slider",
+        "z": "f4550950.27f8e8",
+        "name": "",
+        "label": "Speed",
+        "tooltip": "",
+        "group": "ad4debad.0242d8",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "x": 490,
+        "y": 460,
+        "wires": [
+            [
+                "4daec6aa.b6fd08",
+                "fec0823b.d10e"
+            ]
+        ]
+    },
+    {
+        "id": "da96cab5.9ab7d8",
+        "type": "ui_text_input",
+        "z": "f4550950.27f8e8",
+        "name": "",
+        "label": "Distance",
+        "tooltip": "",
+        "group": "ad4debad.0242d8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 480,
+        "y": 520,
+        "wires": [
+            [
+                "4daec6aa.b6fd08",
+                "fec0823b.d10e"
+            ]
+        ]
+    },
+    {
+        "id": "ad4debad.0242d8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Robot",
+        "tab": "7288e795.38d2e8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "7288e795.38d2e8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Proto",
+        "icon": "dashboard",
+        "order": "",
+        "disabled": false,
+        "hidden": false
     }
 ]
